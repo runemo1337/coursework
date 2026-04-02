@@ -1,25 +1,21 @@
-import logo from './logo.svg';
+import Character from "./components/Characters";
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>IT-офис</h1>
+      <div className = "characters-grid">
+        <Character name = "Егор" role = "Backend"/>
+        <Character name = "Аня" role = "Frontend" />
+        <Character name = "Андрей" role = "DevOps" />
+        <Character name = "Вова" role = "Data science" />
+        <Character name = "Матвей" role = "Analytics" />
+      </div>
+      
     </div>
   );
+
 }
 
 export default App;
