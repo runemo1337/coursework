@@ -1,6 +1,7 @@
 import Character from "./components/Characters";
 import './App.css';
 
+
 function App() {
   return (
     <div>
