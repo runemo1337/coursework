@@ -1,70 +1,109 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## ИТОГ ПО СИСТЕМЕ ЛОГИКИ (УТВЕРЖДЁННОЕ)
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+### 1. НАВЫКИ (5 штук)
 
-### `npm start`
+| Навык | Направление |
+|-------|-------------|
+| `logic` | Backend |
+| `creativity` | Frontend |
+| `systems` | DevOps |
+| `analytics` | Data Science |
+| `attention` | QA |
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 2. НАЧИСЛЕНИЕ ОЧКОВ
 
-### `npm test`
+**Формат задачи (MVP):**
+- У каждой задачи есть **основной навык** (+15 очков)
+- У некоторых задач есть **дополнительный навык** (+5 очков)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Пример:**
+```javascript
+{
+  text: "Ошибка",
+  nextStep: "success",
+  skill: "logic",      // основной
+  points: 15,
+  secondarySkill: "attention",  // дополнительный
+  secondaryPoints: 5
+}
+```
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 3. УРОВНИ И ЗВАНИЯ
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Формула:** шаг = 15 + (10 + уровень) × уровень
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+| Уровень | Очки | Звание |
+|---------|------|--------|
+| 1 | 0-15 | Начинающий |
+| 2 | 16-42 | Начинающий |
+| 3 | 43-85 | Junior |
+| 4 | 86-139 | Junior |
+| 5 | 140-208 | Middle |
+| 6 | 209-293 | Middle |
+| 7 | 294-395 | Senior |
+| 8 | 396-515 | Senior |
+| 9 | 516-654 | Lead |
+| 10 | 655-813 | Lead |
+| 10+ | 814-1000 | Эксперт сферы |
 
-### `npm run eject`
+**Максимум:** 1000 очков
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 4. ВЫВОД РЕЗУЛЬТАТА (ФИНАЛЬНЫЙ ОТЧЁТ)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+**Порядок:**
+1. Топ-3 направления (с процентами)
+2. Таблица навыков (название, уровень, звание)
+3. Рекомендации (текст, курсы, что учить)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Пример: 
+═══════════════════════════════════════
+       🎓 ТВОЙ IT-ПРОФИЛЬ
+═══════════════════════════════════════
 
-## Learn More
+📊 ТАБЛИЦА НАВЫКОВ:
+───────────────────────────────────────
+🧠 Логика         ████████░░ 45 (Junior)
+🎨 Креативность   ██████████ 52 (Middle)
+⚙️ Системность    ████░░░░░░ 23 (Начинающий)
+📈 Аналитика      ██████░░░░ 38 (Junior)
+🔍 Внимательность ██████████ 58 (Middle)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+───────────────────────────────────────
+🏆 ТВОИ ТОП НАПРАВЛЕНИЙ:
+───────────────────────────────────────
+1. Frontend (Креативность 58, Внимание 52)
+2. Backend (Логика 45, Внимание 38)
+3. QA (Внимание 58, Логика 45)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+───────────────────────────────────────
+💡 РЕКОМЕНДАЦИИ:
+───────────────────────────────────────
+Ты больше всего развил креативность и 
+внимание к деталям. Это ключевые навыки 
+для Frontend-разработчика.
 
-### Code Splitting
+Попробуй изучить HTML, CSS и JavaScript.
+Хороший старт — курс "Основы веб-разработки".
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+═══════════════════════════════════════
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 5. ЛЕКЦИИ / УРОКИ (БУДУЩЕЕ, НЕ В MVP)
 
-### Making a Progressive Web App
+**Концепция:**
+- Перед задачей — мини-лекция по теме (например, "Типы данных в Python")
+- После лекции — возможность задать вопросы (пока кнопками, но потом можно чат с нейронкой через API сделать - это будет разъёб)
+- В конце — задача на проверку понимания
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+**В MVP (сейчас):** задач на понимание/знакомство со сферой, без лекций. Лекции добавим позже.
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
