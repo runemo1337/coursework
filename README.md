@@ -1,108 +1,16 @@
+# React + Vite
 
-## ИТОГ ПО СИСТЕМЕ ЛОГИКИ (УТВЕРЖДЁННОЕ)
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
----
+Currently, two official plugins are available:
 
-### 1. НАВЫКИ (5 штук)
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-| Навык | Направление |
-|-------|-------------|
-| `logic` | Backend |
-| `creativity` | Frontend |
-| `systems` | DevOps |
-| `analytics` | Data Science |
-| `attention` | QA |
+## React Compiler
 
----
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-### 2. НАЧИСЛЕНИЕ ОЧКОВ
+## Expanding the ESLint configuration
 
-**Формат задачи (MVP):**
-- У каждой задачи есть **основной навык** (+15 очков)
-- У некоторых задач есть **дополнительный навык** (+5 очков)
-
-**Пример:**
-```javascript
-{
-  text: "Ошибка",
-  nextStep: "success",
-  skill: "logic",      // основной
-  points: 15,
-  secondarySkill: "attention",  // дополнительный
-  secondaryPoints: 5
-}
-```
-
----
-
-### 3. УРОВНИ И ЗВАНИЯ
-
-**Формула:** шаг = 15 + (10 + уровень) × уровень
-
-| Уровень | Очки | Звание |
-|---------|------|--------|
-| 1 | 0-15 | Начинающий |
-| 2 | 16-42 | Начинающий |
-| 3 | 43-85 | Junior |
-| 4 | 86-139 | Junior |
-| 5 | 140-208 | Middle |
-| 6 | 209-293 | Middle |
-| 7 | 294-395 | Senior |
-| 8 | 396-515 | Senior |
-| 9 | 516-654 | Lead |
-| 10 | 655-813 | Lead |
-| 10+ | 814-1000 | Эксперт сферы |
-
-**Максимум:** 1000 очков
-
----
-
-### 4. ВЫВОД РЕЗУЛЬТАТА (ФИНАЛЬНЫЙ ОТЧЁТ)
-
-**Порядок:**
-1. Топ-3 направления (с процентами)
-2. Таблица навыков (название, уровень, звание)
-3. Рекомендации (текст, курсы, что учить)
-
-Пример: 
-
-       🎓 ТВОЙ IT-ПРОФИЛЬ
-
-
-📊 ТАБЛИЦА НАВЫКОВ:
-
-🧠 Логика         ████████░░ 45 (Junior)
-🎨 Креативность   ██████████ 52 (Middle)
-⚙️ Системность    ████░░░░░░ 23 (Начинающий)
-📈 Аналитика      ██████░░░░ 38 (Junior)
-🔍 Внимательность ██████████ 58 (Middle)
-
-
-🏆 ТВОИ ТОП НАПРАВЛЕНИЙ:
-
-1. Frontend (Креативность 58, Внимание 52)
-2. Backend (Логика 45, Внимание 38)
-3. QA (Внимание 58, Логика 45)
-
-
-💡 РЕКОМЕНДАЦИИ:
-
-Ты больше всего развил креативность и 
-внимание к деталям. Это ключевые навыки 
-для Frontend-разработчика.
-
-Попробуй изучить HTML, CSS и JavaScript.
-Хороший старт — курс "Основы веб-разработки".
-
-
----
-
-### 5. ЛЕКЦИИ / УРОКИ (БУДУЩЕЕ, НЕ В MVP)
-
-**Концепция:**
-- Перед задачей — мини-лекция по теме (например, "Типы данных в Python")
-- После лекции — возможность задать вопросы (пока кнопками, но потом можно чат с нейронкой через API сделать - это будет разъёб)
-- В конце — задача на проверку понимания
-
-**В MVP (сейчас):** задач на понимание/знакомство со сферой, без лекций. Лекции добавим позже.
-
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
