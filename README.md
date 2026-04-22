@@ -1,73 +1,53 @@
-# React + TypeScript + Vite
+# 🎮 Проект: "IT-Профориентация" [Ruslan] & [Ivan]
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Интерактивный квест для выбора будущей профессии в IT.
+Стек: **React + Vite + Tailwind CSS v3**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Инструкция по запуску для Ивана [Ruslan]
 
-## React Compiler
+Тебе **НЕ НУЖНО** заново устанавливать или настраивать Tailwind. Все настройки уже в проекте. Просто выполни эти шаги:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. **Установка всех зависимостей:**
+   - Открой терминал в папке проекта.
+   - Введи команду: `npm install`
+     _(Эта команда автоматически скачает React, Vite и нужную нам 3-ю версию Tailwind)._
 
-## Expanding the ESLint configuration
+2. **Запуск проекта:**
+   - Введи команду: `npm run dev`
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+3. **Просмотр результата:**
+   - Зажми **Ctrl** и кликни по ссылке в терминале (обычно `http://localhost:5173`).
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 📁 Структура папок и файлов (src/) [Ruslan]
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 🛑 Системные файлы (Будь осторожен):
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- **`main.jsx`** — **НЕ ИЗМЕНЯТЬ**. Это "сердце" проекта, которое запускает React. Если в нем что-то удалить, приложение перестанет открываться.
+- **`App.jsx`** — **ОБЩАЯ ЗОНА**. Главный экран, где мы будем соединять визуальные компоненты с логикой.
+- **`index.css`** — Единственный файл стилей, где подключен Tailwind. Свои `.css` файлы не создаем!
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 📂 Наши рабочие зоны:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- 🟧 **`src/data/` — Зона Руслана**
+  - Здесь я пишу сценарии, вопросы и логику квестов в файлах `.js`.
+- 🟦 **`src/components/` — Зона Ивана**
+  - Здесь ты создаешь все визуальные элементы (кнопки, меню, карточки профессий) в файлах `.jsx`.
+- 🟩 **`src/assets/` — Общая зона**
+  - Сюда закидываем картинки, иконки и фоны.
+
+---
+
+## 🌳 Работа с ветками в Git [Ruslan]
+
+Чтобы мы не мешали друг другу и не ломали общий код, мы работаем в разных ветках:
+
+1. **Руслан** работает в основной ветке: **`master`**.
+2. **Иван** работает в своей ветке: **`branch_name`**.
+
+---
+
+> 💡 _Если добавляешь новые пункты в инструкцию — подписывай их своим именем в квадратных скобках, например [Ivan]._
