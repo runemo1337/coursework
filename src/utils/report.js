@@ -10,7 +10,7 @@ export const generateReport = (skills) => {
   }
 
   return {
-    finalProfesiion: getTopProfession(skills),
+    finalProfession: getTopProfession(skills),
     finalTotalPoints: getTotalPoints(skills),
   };
 };
