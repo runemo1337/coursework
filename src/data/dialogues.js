@@ -51,7 +51,7 @@ export const dialogues = {
         {
           text: "8",
           nextStep: "taskWrong",
-          skill: "",
+          skill: null,
           points: 0,
           secondarySkill: null,
           secondaryPoints: 0,
@@ -59,7 +59,7 @@ export const dialogues = {
         {
           text: "53",
           nextStep: "taskWrong",
-          skill: "",
+          skill: null,
           points: 0,
           secondarySkill: null,
           secondaryPoints: 0,
@@ -67,8 +67,8 @@ export const dialogues = {
         {
           text: "Ошибка",
           nextStep: "taskCorrect",
-          skill: "",
-          points: 0,
+          skill: "logic",
+          points: 10,
           secondarySkill: null,
           secondaryPoints: 0,
         },
@@ -96,7 +96,7 @@ export const dialogues = {
       text: "Давай. Если захочешь узнать что-то про бэкенд или просто зачиллиться — приходи. Папочка всегда на связи. Шучу.",
       options: [
         {
-          text: "...",
+          text: "Закончить диалог",
           nextStep: "close",
         },
       ],
@@ -165,7 +165,7 @@ export const dialogues = {
           nextStep: "answerJavaScript",
         },
         {
-          text: "Понятно. А то ты любишь делать в свободное время?",
+          text: "Понятно. А что ты любишь делать в свободное время?",
           nextStep: "question3Answer",
         },
       ],
@@ -320,7 +320,7 @@ export const dialogues = {
         {
           text: "HTML",
           nextStep: "taskWrong",
-          skill: "",
+          skill: null,
           points: 0,
           secondarySkill: null,
           secondaryPoints: 0,
@@ -328,7 +328,7 @@ export const dialogues = {
         {
           text: "CSS",
           nextStep: "taskWrong",
-          skill: "",
+          skill: null,
           points: 0,
           secondarySkill: null,
           secondaryPoints: 0,
@@ -336,8 +336,8 @@ export const dialogues = {
         {
           text: "JavaScript",
           nextStep: "taskCorrect",
-          skill: "",
-          points: 0,
+          skill: "creativity",
+          points: 10,
           secondarySkill: null,
           secondaryPoints: 0,
         },
@@ -365,7 +365,7 @@ export const dialogues = {
       text: "До скорого, мой надеюсь будущий ученик!",
       options: [
         {
-          text: "...",
+          text: "Закончить диалог",
           nextStep: "close",
         },
       ],
@@ -424,15 +424,15 @@ export const dialogues = {
         {
           text: "docker run",
           nextStep: "taskCorrect",
-          skill: "",
-          points: 0,
+          skill: "systems",
+          points: 10,
           secondarySkill: null,
           secondaryPoints: 0,
         },
         {
           text: "docker start",
           nextStep: "taskWrong",
-          skill: "",
+          skill: null,
           points: 0,
           secondarySkill: null,
           secondaryPoints: 0,
@@ -440,7 +440,7 @@ export const dialogues = {
         {
           text: "docker build",
           nextStep: "taskWrong",
-          skill: "",
+          skill: null,
           points: 0,
           secondarySkill: null,
           secondaryPoints: 0,
@@ -469,7 +469,7 @@ export const dialogues = {
       text: "Я надеюсь, у нас с тобой в будущем будет много продуктивной работы!",
       options: [
         {
-          text: "...",
+          text: "Закончить диалог",
           nextStep: "close",
         },
       ],
@@ -546,7 +546,7 @@ export const dialogues = {
         {
           text: "Модель недообучена",
           nextStep: "taskWrong",
-          skill: "",
+          skill: null,
           points: 0,
           secondarySkill: null,
           secondaryPoints: 0,
@@ -554,15 +554,15 @@ export const dialogues = {
         {
           text: "Модель переобучена",
           nextStep: "taskCorrect",
-          skill: "",
-          points: 0,
+          skill: "analytics",
+          points: 10,
           secondarySkill: null,
           secondaryPoints: 0,
         },
         {
           text: "Модель работает идеально",
           nextStep: "taskWrong",
-          skill: "",
+          skill: null,
           points: 0,
           secondarySkill: null,
           secondaryPoints: 0,
@@ -591,7 +591,7 @@ export const dialogues = {
       text: "Всё, пока.",
       options: [
         {
-          text: "...",
+          text: "Закончить диалог",
           nextStep: "close",
         },
       ],
@@ -659,15 +659,15 @@ export const dialogues = {
         {
           text: "Баг",
           nextStep: "taskCorrect",
-          skill: "",
-          points: 0,
+          skill: "attention",
+          points: 10,
           secondarySkill: null,
           secondaryPoints: 0,
         },
         {
           text: "Фича",
           nextStep: "taskWrong",
-          skill: "",
+          skill: null,
           points: 0,
           secondarySkill: null,
           secondaryPoints: 0,
@@ -696,7 +696,7 @@ export const dialogues = {
       text: "До скорого. Заходи, как будет время.",
       options: [
         {
-          text: "...",
+          text: "Закончить диалог",
           nextStep: "close",
         },
       ],

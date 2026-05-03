@@ -2,31 +2,31 @@ export const workers = [
   {
     id: 1,
     name: "",
-    profession: "Frontend",
+    profession: "",
     isKnown: false,
   },
   {
     id: 2,
     name: "",
-    profession: "Backend",
+    profession: "",
     isKnown: false,
   },
   {
     id: 3,
     name: "",
-    profession: "DevOps",
+    profession: "",
     isKnown: false,
   },
   {
     id: 4,
     name: "",
-    profession: "Data Science",
+    profession: "",
     isKnown: false,
   },
   {
     id: 5,
     name: "",
-    profession: "QA",
+    profession: "",
     isKnown: false,
   },
 ];
