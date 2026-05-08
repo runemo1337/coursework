@@ -67,13 +67,14 @@ export const dialogues = {
         {
           text: "Ошибка",
           nextStep: "taskCorrect",
-          skill: "",
-          points: 0,
-          secondarySkill: null,
-          secondaryPoints: 0,
+          skill: "logic",
+          points: 15,
+          secondarySkill: "attention",
+          secondaryPoints: 5
         },
       ],
     },
+
     taskCorrect: {
       text: "Верно! Python — строгий, он не складывает число со строкой просто так. Вылетит TypeError. В этом его плюс — меньше магии, меньше багов.",
       options: [
@@ -336,10 +337,10 @@ export const dialogues = {
         {
           text: "JavaScript",
           nextStep: "taskCorrect",
-          skill: "",
-          points: 0,
-          secondarySkill: null,
-          secondaryPoints: 0,
+          skill: "creativity",
+          points: 15,
+          secondarySkill: "attention",
+          secondaryPoints: 5
         },
       ],
     },
@@ -424,10 +425,10 @@ export const dialogues = {
         {
           text: "docker run",
           nextStep: "taskCorrect",
-          skill: "",
-          points: 0,
-          secondarySkill: null,
-          secondaryPoints: 0,
+          skill: "systems",
+          points: 15,
+          secondarySkill: "logic",
+          secondaryPoints: 5
         },
         {
           text: "docker start",
@@ -554,10 +555,10 @@ export const dialogues = {
         {
           text: "Модель переобучена",
           nextStep: "taskCorrect",
-          skill: "",
-          points: 0,
-          secondarySkill: null,
-          secondaryPoints: 0,
+          skill: "analytics",
+          points: 15,
+          secondarySkill: "logic",
+          secondaryPoints: 5
         },
         {
           text: "Модель работает идеально",
@@ -659,10 +660,10 @@ export const dialogues = {
         {
           text: "Баг",
           nextStep: "taskCorrect",
-          skill: "",
-          points: 0,
-          secondarySkill: null,
-          secondaryPoints: 0,
+          skill: "attention",
+          points: 15,
+          secondarySkill: "analytics",
+          secondaryPoints: 5
         },
         {
           text: "Фича",

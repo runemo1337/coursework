@@ -2,21 +2,28 @@ import { useState } from 'react';
 import { dialogues } from '../data/dialogues';
 import '../App.css';
 
-function Dialogue({ characterName, onClose }) {
+function Dialogue({ characterName, onClose, onSkillGain }) {
     const [currentStep, setCurrentStep] = useState('start');
     
-    const handleStepChange = (nextStep) => {
+    const handleStepChange = (nextStep, option = {}) => {
+
+        if (option.skill && option.points) {
+            onSkillGain(option.skill, option.points, option.secondarySkill, option.secondaryPoints);
+        }
+
         if (nextStep === 'close') {
             onClose();
-        } else {
+        } 
+        else {
             setCurrentStep(nextStep);
         }
     };
 
     
     const stepData = dialogues[characterName][currentStep];
+
     const text = stepData.text;
-    const options = stepData.options
+    const options = stepData.options;
 
 return (
     <div className="dialogue-overlay">
@@ -27,7 +34,7 @@ return (
         <p>{characterName}: {text}</p>
         <div className="dialogue-option">
         {options.map((option,index) => (
-            <button key={index} className="dialogue-button" onClick={() => handleStepChange(option.nextStep)}>
+            <button key={index} className="dialogue-button" onClick={() => handleStepChange(option.nextStep, option)}>
                 {option.text}
             </button>
         ))}
