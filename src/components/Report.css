@@ -1,0 +1,94 @@
+.report-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.report-window {
+    background: white;
+    border-radius: 24px;
+    padding: 32px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+}
+
+.report-window h1 {
+    text-align: center;
+    margin-bottom: 24px;
+    font-size: 24px;  
+}
+
+.report-window button {
+    width: 50%;
+    margin-top: 24px;
+    padding: 12px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.report-window button:hover {
+    background-color: #2563eb
+}
+
+.top-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    background-color: #f3f4f6;
+    border-radius: 10px;
+    margin-bottom: 8px;
+}
+
+.top-number {
+    font-size: 18px;
+    font-weight: bold;
+    color: #3b82f6;
+    width: 35px;
+}
+
+.top-name {
+    flex: 1;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.top-points {
+    font-size: 14px;
+    color: #6b7280
+}
+
+.skill-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.skill-name {
+  font-size: 16px;
+}
+
+.skill-points {
+    font-size: 16px;
+    font-weight: 500;
+    color: #3b82f6;
+}
+
+
+
+
+

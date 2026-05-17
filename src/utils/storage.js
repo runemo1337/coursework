@@ -1,6 +1,6 @@
 export const saveSkills = (skills) => {
-  const strSkills = JSON.stringify(skills);
-  localStorage.setItem("skillsData", strSkills);
+  const skillsString = JSON.stringify(skills);
+  localStorage.setItem("game_skills", skillsString);
 };
 
 const defaultSkills = {
@@ -12,14 +12,15 @@ const defaultSkills = {
 };
 
 export const loadSkills = () => {
-  const loadedSkills = localStorage.getItem("skillsData");
-  if (loadedSkills === null) {
+  const savedSkills = localStorage.getItem("game_skills");
+  
+  if (savedSkills === null) {
     return defaultSkills;
-  } else {
-    return JSON.parse(loadedSkills);
   }
+  
+  return JSON.parse(savedSkills);
 };
 
 export const clearSkills = () => {
-  localStorage.removeItem("skillsData");
+  localStorage.removeItem("game_skills");
 };
