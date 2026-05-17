@@ -25,24 +25,54 @@ function Dialogue({ characterName, onClose, onSkillGain }) {
     const text = stepData.text;
     const options = stepData.options;
 
+
 return (
-    <div className="dialogue-overlay">
-        <div className="dialogue-window">
-            <div className="dialogue-text">
-        <p>Диалог с {characterName}</p>
-        <p>Текущий шаг: {currentStep}</p>
-        <p>{characterName}: {text}</p>
+  <div className="dialogue-overlay">
+    <div className="dialogue-window">
+      
+      {/* Текст ментора */}
+      {stepData.text && (
+        <div className="dialogue-text">
+          <img className="portrait" src={`/sprites/${characterName.toLowerCase()}_portrait.png`} />
+          <div className="dialogue-message">
+            <strong>{characterName}:</strong> {stepData.text}
+          </div>
+        </div>
+      )}
+
+      {/* Текст игрока (если есть) */}
+      {stepData.playerText && (
+        <div className="dialogue-text player-text">
+          <div className="dialogue-message">
+            <strong>Игрок:</strong> {stepData.playerText}
+          </div>
+        </div>
+      )}
+      
+      {/* Кнопки (если есть) */}
+      {stepData.options && stepData.options.length > 0 && (
         <div className="dialogue-option">
-        {options.map((option,index) => (
+          {stepData.options.map((option, index) => (
             <button key={index} className="dialogue-button" onClick={() => handleStepChange(option.nextStep, option)}>
-                {option.text}
+              {option.text}
             </button>
-        ))}
-        <button className="dialogue-button dialogue-button-close" onClick={onClose}>Закрыть</button>
+          ))}
+          
         </div>
-            </div>
+      )}
+
+      {stepData.showNextButton && (
+        <div className="dialogue-next-container">
+          <button className="dialogue-next-button" onClick={() => handleStepChange(stepData.nextStep)}>
+            {stepData.nextButtonText || ">"}
+          </button>
         </div>
+      )}
+
+      <button className="dialogue-button dialogue-button-close" onClick={onClose}>Закрыть</button>
+      
     </div>
+  </div>
 );
 }
 
