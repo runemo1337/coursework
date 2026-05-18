@@ -16,24 +16,6 @@ export const generateReport = (skills) => {
 
   const bestProfession = getTopProfession(skills);
   const recommendationsGuide = {
-<<<<<<< HEAD
-    Backend: "Тебе в backend",
-    Frontend: "Тебе в frontend",
-    DevOps: "Тебе в DevOps",
-    "Data Science": "Тебе в data science",
-    QA: "Тебе в QA",
-  };
-
-  const recommendations = recommendationsGuide[bestProfession];
-
-  return {
-    finalTopProfession: getTopProfession(skills),
-    finalTotalPoints: totalPoints,
-    finalPercentages: percentages,
-    finalRecommendations: recommendations,
-  };
-};
-=======
     Backend: "Изучи Python или Java, разберись с базами данных и API.",
     Frontend: "Изучи HTML, CSS и JavaScript. Попробуй React.",
     DevOps: "Изучи Linux, Docker, CI/CD (GitHub Actions).",
@@ -50,4 +32,3 @@ export const generateReport = (skills) => {
     recommendations: recommendations,
   };
 };
->>>>>>> Grigorichev_branch

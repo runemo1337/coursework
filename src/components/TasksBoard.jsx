@@ -15,10 +15,6 @@ const TasksBoard = ({ onClose, skills, setSkills }) => {
     localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
   }, [completedTasks]);
 
-  useEffect(() => {
-    localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
-  }, [completedTasks]);
-
   const groupedTasks = tasks.reduce((acc, task) => {
     if (!acc[task.skill]) acc[task.skill] = [];
     acc[task.skill].push(task);

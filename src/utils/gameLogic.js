@@ -33,16 +33,6 @@ const skillToProfession = {
 };
 
 export const getTopProfession = (skills) => {
-<<<<<<< HEAD
-  const skillsKey = Object.entries(skills);
-  let maxPoints = 0;
-  let bestSkill = null;
-
-  for (let points of skillsKey) {
-    if (points[1] > maxPoints) {
-      maxPoints = points[1];
-      bestSkill = points[0];
-=======
   const skillsEntries = Object.entries(skills);
   let maxPoints = 0;
   let bestSkill = null;
@@ -51,13 +41,8 @@ export const getTopProfession = (skills) => {
     if (points > maxPoints) {
       maxPoints = points;
       bestSkill = skill;
->>>>>>> Grigorichev_branch
     }
   }
 
   return skillToProfession[bestSkill];
-<<<<<<< HEAD
 };
-=======
-};
->>>>>>> Grigorichev_branch
