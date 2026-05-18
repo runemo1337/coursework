@@ -5,21 +5,21 @@ export const addSkillPoints = (
   secondarySkill = null,
   secondaryPoints = 0,
 ) => {
-  const updateSkills = { ...skills };
+  const updatedSkills = { ...skills };
 
-  updateSkills[skill] = updateSkills[skill] + points;
+  updatedSkills[skill] = updatedSkills[skill] + points;
 
   if (secondarySkill && secondaryPoints) {
-    updateSkills[secondarySkill] =
-      updateSkills[secondarySkill] + secondaryPoints;
+    updatedSkills[secondarySkill] =
+      updatedSkills[secondarySkill] + secondaryPoints;
   }
 
-  return updateSkills;
+  return updatedSkills;
 };
 
 export const getTotalPoints = (skills) => {
-  const skillsVal = Object.values(skills);
-  const totalSum = skillsVal.reduce((sum, cur) => sum + cur, 0);
+  const skillsValues = Object.values(skills);
+  const totalSum = skillsValues.reduce((sum, current) => sum + current, 0);
 
   return totalSum;
 };
@@ -33,14 +33,14 @@ const skillToProfession = {
 };
 
 export const getTopProfession = (skills) => {
-  const skillsKey = Object.entries(skills);
+  const skillsEntries = Object.entries(skills);
   let maxPoints = 0;
   let bestSkill = null;
 
-  for (let points of skillsKey) {
-    if (points[1] > maxPoints) {
-      maxPoints = points[1];
-      bestSkill = points[0];
+  for (let [skill, points] of skillsEntries) {
+    if (points > maxPoints) {
+      maxPoints = points;
+      bestSkill = skill;
     }
   }
 
