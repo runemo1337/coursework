@@ -1,94 +1,151 @@
 .report-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0,0,0,0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
 .report-window {
-    background: white;
-    border-radius: 24px;
-    padding: 32px;
-    max-width: 500px;
-    width: 90%;
-    max-height: 90vh;
+  background: white;
+  border-radius: 24px;
+  padding: 32px;
+  max-width: 550px;
+  width: 90%;
+  max-height: 85vh;
+  overflow-y: auto;
 }
 
 .report-window h1 {
-    text-align: center;
-    margin-bottom: 24px;
-    font-size: 24px;  
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 24px;
 }
 
-.report-window button {
-    width: 50%;
-    margin-top: 24px;
-    padding: 12px;
-    background-color: #3b82f6;
-    color: white;
-    border: none;
-    border-radius: 12px;
-    font-size: 16px;
-    cursor: pointer;
+.report-window h2 {
+  font-size: 18px;
+  margin-top: 20px;
+  margin-bottom: 12px;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 6px;
 }
 
-.report-window button:hover {
-    background-color: #2563eb
-}
-
+/* Топ-3 направления */
 .top-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 10px;
-    background-color: #f3f4f6;
-    border-radius: 10px;
-    margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  background-color: #f3f4f6;
+  border-radius: 10px;
+  margin-bottom: 8px;
 }
 
 .top-number {
-    font-size: 18px;
-    font-weight: bold;
-    color: #3b82f6;
-    width: 35px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #3b82f6;
+  width: 35px;
 }
 
 .top-name {
-    flex: 1;
-    font-size: 16px;
-    font-weight: 500;
+  flex: 1;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .top-points {
-    font-size: 14px;
-    color: #6b7280
+  font-size: 14px;
+  color: #6b7280;
 }
 
+/* Таблица навыков */
 .skill-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 0;
-    border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .skill-name {
-  font-size: 16px;
+  width: 130px;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.skill-bar-container {
+  flex: 1;
+  height: 10px;
+  background-color: #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.5s ease;
 }
 
 .skill-points {
-    font-size: 16px;
-    font-weight: 500;
-    color: #3b82f6;
+  width: 45px;
+  text-align: right;
+  font-size: 14px;
+  font-weight: 500;
+  color: #3b82f6;
+  flex-shrink: 0;
 }
 
+.skill-level {
+  width: 90px;
+  text-align: right;
+  font-size: 12px;
+  color: #6b7280;
+  flex-shrink: 0;
+}
 
+/* Рекомендации */
+.recommendation-block {
+  background-color: #f3f4f6;
+  padding: 16px;
+  border-radius: 12px;
+  margin-top: 10px;
+}
 
+.recommendation-text {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
 
+.recommendation-courses {
+  font-size: 14px;
+  color: #4b5563;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 12px;
+  margin-top: 8px;
+}
 
+/* Кнопка перезапуска */
+.restart-button {
+  width: 100%;
+  margin-top: 24px;
+  padding: 12px;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.restart-button:hover {
+  background-color: #2563eb;
+}
