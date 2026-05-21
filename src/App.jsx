@@ -8,8 +8,13 @@ import { clearSkills, loadSkills, saveSkills } from './utils/storage';
 import AIChat from './components/AIChat';
 import TasksBoard from './components/TasksBoard';
 import { characterPrompts } from './data/characterPrompts';
+import PlayerSelect from './components/PlayerSelect';
+import NameInput from './components/NameInput';
+import { loadPlayerData, savePlayerData } from './utils/saveSystem';
 
 function App() {
+  const [stage, setStage] = useState('select'); // 'select', 'nameInput', 'game'
+  const [currentPlayer, setCurrentPlayer] = useState(null);
   const [selectedCharacter, setSelectedCharacter] = useState(null);
   const [skills, setSkills] = useState(() => loadSkills());
 
@@ -22,6 +27,40 @@ function App() {
   const [showAIChat, setShowAIChat] = useState(false);
   const [selectedAIMentor, setSelectedAIMentor] = useState(null);
   const [showTaskBoard, setShowTaskBoard] = useState(false);
+
+  // Выбор существующего игрока
+  const handleSelectPlayer = (name) => {
+    const playerData = loadPlayerData(name);
+    if (playerData) {
+      setCurrentPlayer(playerData);
+      setSkills(playerData.skills);
+      setStage('game');
+    }
+  };
+
+  // Создание нового игрока
+  const handleCreateNew = () => {
+    setStage('nameInput');
+  };
+
+  // Сохранение нового имени
+  const handleSaveName = (name) => {
+    console.log("handleSaveName вызван с именем:", name);
+    const newPlayer = {
+      name: name,
+      skills: {
+        logic: 0,
+        creativity: 0,
+        systems: 0,
+        analytics: 0,
+        attention: 0
+      }
+    };
+    savePlayerData(newPlayer);
+    setCurrentPlayer(newPlayer);
+    setSkills(newPlayer.skills);
+    setStage('game');
+  };
 
   // AI Чат
   if (showAIChat && selectedAIMentor) {
@@ -41,6 +80,7 @@ function App() {
         onClose={() => setShowTaskBoard(false)}
         skills={skills}
         setSkills={setSkills}
+        playerName={currentPlayer?.name}
       />
     );
   }
@@ -60,25 +100,25 @@ function App() {
   }
 
   if (showReport) {
-    return (
-      <Report
-        skills={skills}
-        onRestart={() => {
-          clearSkills();
-          localStorage.removeItem('completedTasks');
-          setSkills({
-            logic: 0,
-            creativity: 0,
-            systems: 0,
-            analytics: 0,
-            attention: 0,
-          });
-          setShowReport(false);
-        }}
-      />
-    );
+    return <Report skills={skills} onRestart={() => {
+      clearSkills();
+      localStorage.removeItem("completedTasks");
+      setSkills({ logic: 0, creativity: 0, systems: 0, analytics: 0, attention: 0 });
+      setShowReport(false);
+    }} />;
   }
 
+  // Выбор стажёра
+  if (stage === 'select') {
+    return <PlayerSelect onSelectPlayer={handleSelectPlayer} onCreateNew={handleCreateNew} />;
+  }
+
+  // Ввод имени нового стажёра
+  if (stage === 'nameInput') {
+    return <NameInput onSave={handleSaveName} />;
+  }
+
+  // Основная игра
   return (
     <div>
       <div className="characters-container">
@@ -118,6 +158,14 @@ function App() {
         }}>🤖 Спросить Дмитрия (AI)</button>
         
         <button onClick={() => setShowTaskBoard(true)}>📋 Доска заданий</button>
+
+        <button onClick={() => {
+          setStage('select');
+          setSelectedCharacter(null);
+          setShowReport(false);
+          setShowAIChat(false);
+          setShowTaskBoard(false);
+        }}>🚪 Выйти из аккаунта</button>
       </div>
     </div>
   );

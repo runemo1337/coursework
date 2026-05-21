@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { tasks } from "../data/tasks";
 import { addSkillPoints } from "../utils/gameLogic";
 
-const TasksBoard = ({ onClose, skills, setSkills }) => {
+const TasksBoard = ({ onClose, skills, setSkills, playerName }) => {
   const [completedTasks, setCompletedTasks] = useState(() => {
-    const saved = localStorage.getItem("completedTasks");
+    const saved = localStorage.getItem(`completedTasks_${playerName}`);
     return saved ? JSON.parse(saved) : [];
   });
 
@@ -12,8 +12,8 @@ const TasksBoard = ({ onClose, skills, setSkills }) => {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
-  }, [completedTasks]);
+    localStorage.setItem(`completedTasks_${playerName}`, JSON.stringify(completedTasks));
+  }, [completedTasks, playerName]);
 
   const groupedTasks = tasks.reduce((acc, task) => {
     if (!acc[task.skill]) acc[task.skill] = [];

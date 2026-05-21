@@ -174,3 +174,76 @@ body {
   top: 200px;
   left: 535px;
 }
+
+/* NameInput стили */
+.name-input-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.name-input-window {
+  background: white;
+  border-radius: 24px;
+  padding: 32px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.name-input-window h1 {
+  margin-bottom: 16px;
+  font-size: 28px;
+}
+
+.name-input-window p {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #4b5563;
+}
+
+.name-input-window input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.name-input-window input:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+.name-input-window button {
+  width: 100%;
+  padding: 12px;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.name-input-window button:hover {
+  background-color: #2563eb;
+}
+
+.error-message {
+  color: #ef4444;
+  font-size: 14px;
+  margin-bottom: 16px;
+  text-align: center;
+}
