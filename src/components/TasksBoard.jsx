@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { tasks } from "../data/tasks";
 import { addSkillPoints } from "../utils/gameLogic";
+import "./TasksBoard.css";
 
 const TasksBoard = ({ onClose, skills, setSkills, playerName }) => {
   const [completedTasks, setCompletedTasks] = useState(() => {
@@ -53,7 +54,7 @@ const TasksBoard = ({ onClose, skills, setSkills, playerName }) => {
         onClick={(e) => e.stopPropagation()}
       >
         <div className="board-header">
-          <h2>Доска задач</h2>
+          <h2>📋 Доска задач</h2>
           <button className="close-btn" onClick={onClose}>
             ✕
           </button>

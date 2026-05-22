@@ -4,26 +4,35 @@ import './App.css';
 import Dialogue from './components/Dialogue';
 import Report from './components/Report';
 import { addSkillPoints } from './utils/gameLogic';
-import { clearSkills, loadSkills, saveSkills } from './utils/storage';
 import AIChat from './components/AIChat';
 import TasksBoard from './components/TasksBoard';
 import { characterPrompts } from './data/characterPrompts';
 import PlayerSelect from './components/PlayerSelect';
 import NameInput from './components/NameInput';
-import { loadPlayerData, savePlayerData } from './utils/saveSystem';
+import { 
+  loadPlayerData, 
+  savePlayerData, 
+  saveSkills, 
+  clearSkillsByPlayer 
+} from './utils/saveSystem';
 
 function App() {
-  const [stage, setStage] = useState('select'); // 'select', 'nameInput', 'game'
+  const [stage, setStage] = useState('select');
   const [currentPlayer, setCurrentPlayer] = useState(null);
   const [selectedCharacter, setSelectedCharacter] = useState(null);
-  const [skills, setSkills] = useState(() => loadSkills());
+  const [skills, setSkills] = useState({
+    logic: 0,
+    creativity: 0,
+    systems: 0,
+    analytics: 0,
+    attention: 0
+  });
 
   const handleCharacterClick = (characterName) => {
     setSelectedCharacter(characterName);
   };
 
   const [showReport, setShowReport] = useState(false);
-
   const [showAIChat, setShowAIChat] = useState(false);
   const [selectedAIMentor, setSelectedAIMentor] = useState(null);
   const [showTaskBoard, setShowTaskBoard] = useState(false);
@@ -45,7 +54,6 @@ function App() {
 
   // Сохранение нового имени
   const handleSaveName = (name) => {
-    console.log("handleSaveName вызван с именем:", name);
     const newPlayer = {
       name: name,
       skills: {
@@ -93,7 +101,9 @@ function App() {
         onSkillGain={(skill, points, secondarySkill, secondaryPoints) => {
           const newSkills = addSkillPoints(skills, skill, points, secondarySkill, secondaryPoints);
           setSkills(newSkills);
-          saveSkills(newSkills);
+          if (currentPlayer?.name) {
+            saveSkills(currentPlayer.name, newSkills);
+          }
         }}
       />
     );
@@ -101,19 +111,25 @@ function App() {
 
   if (showReport) {
     return <Report skills={skills} onRestart={() => {
-      clearSkills();
-      localStorage.removeItem("completedTasks");
-      setSkills({ logic: 0, creativity: 0, systems: 0, analytics: 0, attention: 0 });
+      if (currentPlayer?.name) {
+        clearSkillsByPlayer(currentPlayer.name);
+        localStorage.removeItem(`completedTasks_${currentPlayer.name}`);
+      }
+      setSkills({
+        logic: 0,
+        creativity: 0,
+        systems: 0,
+        analytics: 0,
+        attention: 0
+      });
       setShowReport(false);
     }} />;
   }
 
-  // Выбор стажёра
   if (stage === 'select') {
     return <PlayerSelect onSelectPlayer={handleSelectPlayer} onCreateNew={handleCreateNew} />;
   }
 
-  // Ввод имени нового стажёра
   if (stage === 'nameInput') {
     return <NameInput onSave={handleSaveName} />;
   }
@@ -157,8 +173,13 @@ function App() {
           setShowAIChat(true);
         }}>🤖 Спросить Дмитрия (AI)</button>
         
-        <button onClick={() => setShowTaskBoard(true)}>📋 Доска заданий</button>
-
+        <button 
+          className="task-board-button" 
+          onClick={() => setShowTaskBoard(true)}
+        >
+          <img src="/buttons/task-board-icon.png" alt="Доска задач" />
+        </button>
+        
         <button onClick={() => {
           setStage('select');
           setSelectedCharacter(null);
