@@ -1,0 +1,152 @@
+.mentor-selection-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1100;
+}
+
+.mentor-selection-container {
+  background: #1e293b;
+  border-radius: 24px;
+  padding: 32px;
+  max-width: 1000px;
+  width: 90%;
+  text-align: center;
+}
+
+.mentor-selection-container h2 {
+  color: white;
+  margin-bottom: 24px;
+}
+
+.mentors-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.mentor-card {
+  width: 160px;
+  padding: 20px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  border: 2px solid transparent;
+  position: relative;
+}
+
+.mentor-card.hovered {
+  transform: scale(1.05);
+  border-color: currentColor;
+}
+
+.mentor-sprite {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
+
+.mentor-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 4px;
+}
+
+.mentor-role {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-bottom: 8px;
+}
+
+.mentor-topics {
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.topics-title {
+  font-size: 10px;
+  color: #94a3b8;
+  margin-bottom: 6px;
+}
+
+.topics-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: center;
+}
+
+.topic-tag {
+  font-size: 9px;
+  background: rgba(59,130,246,0.3);
+  padding: 2px 6px;
+  border-radius: 10px;
+  color: #93c5fd;
+}
+
+.confirm-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1200;
+}
+
+.confirm-window {
+  background: #1e293b;
+  border-radius: 20px;
+  padding: 24px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  border: 1px solid #3b82f6;
+}
+
+.confirm-window h3 {
+  color: white;
+  margin-bottom: 16px;
+}
+
+.confirm-window p {
+  color: #cbd5e1;
+  margin-bottom: 24px;
+}
+
+.confirm-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.confirm-btn {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background-color: #475569;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+}

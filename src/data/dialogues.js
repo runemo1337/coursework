@@ -506,4 +506,127 @@ export const dialogues = {
     nextStep: "close"
   },
 },
+Робот: {
+  // ========== АВТОМАТИЧЕСКИЙ ТУТОРИАЛ (ПЕРВЫЙ ДИАЛОГ) ==========
+  tutorialStart: {
+    text: "Приветствую тебя, стажёр! Меня зовут B.A.G! Binary Algorithmic Guide — бинарный алгоритмический гид!",
+    type: "mentor",
+    showNextButton: true,
+    nextStep: "tutorialIntro1"
+  },
+  tutorialIntro1: {
+    text: "Я специально разработан и внедрён для того, чтобы помогать тем, кто приходит к нам на распределительную стажировку.",
+    type: "mentor",
+    showNextButton: true,
+    nextStep: "tutorialIntro2"
+  },
+  tutorialIntro2: {
+    text: "Сейчас у компании сложный период, и у нас почти нет денег, чтобы нанять много узкоквалифицированных специалистов.",
+    type: "mentor",
+    showNextButton: true,
+    nextStep: "tutorialIntro3"
+  },
+  tutorialIntro3: {
+    text: "Поэтому ты будешь проходить стажировку по всем нашим пяти направлениям!",
+    type: "mentor",
+    showNextButton: true,
+    nextStep: "tutorialIntro4"
+  },
+  tutorialIntro4: {
+    text: "Это Backend, Frontend, DevOps, Data Science и QA!",
+    type: "mentor",
+    showNextButton: true,
+    nextStep: "tutorialIntro5"
+  },
+  tutorialIntro5: {
+    text: "Пойдём, покажу наш офис и ребят, у которых ты будешь обучаться.",
+    type: "mentor",
+    showNextButton: true,
+    nextStep: "tutorialShowOffice"
+  },
+  tutorialShowOffice: {
+    text: "У нас простенький офис. Если что-то понадобится — просто кликни! Для начала можешь на меня!)",
+    type: "mentor",
+    action: "showRobotMap",
+    showNextButton: true,
+    nextStep: "close"
+  },
+
+  // ========== ПОСЛЕ КЛИКА ПО РОБОТУ НА КАРТЕ ==========
+  afterClick: {
+    text: "Это твой первый айтем на сегодня — доска с заданиями. Нажми на неё!",
+    type: "mentor",
+    action: "moveRobotToTaskBoard",
+    action: "showTaskButton",
+    action: "highlightTaskBoard",
+    options: [
+      { text: "Понял", nextStep: "close" }
+    ]
+  },
+
+  // ========== ВНУТРИ ДОСКИ ЗАДАЧ (ТУТОРИАЛ) ==========
+  insideTaskBoard: {
+    text: "Каждый раз на ней будут появляться новые задания, выполняя которые ты сможешь получать опыт и двигаться дальше. О смотри, у тебя уже первое задание есть: надо познакомиться со всеми, пошли быстрее! Чтобы выйти - нажми на крестик",
+    type: "mentor",
+    nextStep: "close" 
+    
+  },
+
+  // ========== ПРОЩАНИЕ РОБОТА ==========
+  goodbye: {
+    text: "Ну, пока я тебя оставлю. Иди знакомься с менторами. Как закончишь — я снова приду. Удачи!",
+    type: "mentor",
+    options: [
+      { text: "Понял, спасибо!", nextStep: "close" }
+    ]
+  },
+  afterIntroduction: {
+  text: "И снова здравствуй! Я вижу, ты уже познакомился с командой! Ну как тебе наша организация?",
+  type: "mentor",
+  options: [
+    { text: "Все отлично, мне понравилось, хорошие ребята", nextStep: "reactionPositive" },
+    { text: "Неплохо, рабочий коллектив", nextStep: "reactionNeutral" },
+    { text: "Мне не особо зашло", nextStep: "reactionNegative" }
+  ]
+},
+reactionPositive: {
+  text: "Это замечательно! Такими темпами ты быстро вольёшься в команду и сможешь освоиться!",
+  type: "mentor",
+  showNextButton: true,
+  nextStep: "chooseMentorIntro"
+},
+reactionNeutral: {
+  text: "Да, самое главное — это работоспособность, и здесь ты её прокачаешь на максимум!",
+  type: "mentor",
+  showNextButton: true,
+  nextStep: "chooseMentorIntro"
+},
+reactionNegative: {
+  text: "Не спеши с выводами, это только начало, тебе нужно просто почувствовать этот вайб!",
+  type: "mentor",
+  showNextButton: true,
+  nextStep: "chooseMentorIntro"
+},
+chooseMentorIntro: {
+  text: "А теперь по контракту стажировки ты должен выбрать ментора для дальнейшего обучения. Подумай прежде чем выбрать!",
+  type: "mentor",
+  options: [
+    { 
+      text: "Далее", 
+      nextStep: "close",
+      action: "openMentorSelection"
+    }
+  ]
+
+  
+},
+afterMentorChoice: {
+  text: "Ну что ж, я желаю тебе удачи в твоей первой распределительной стажировке. Сейчас основные задачи у тебя будут по выбранному направлению, также возможны смежные задачи. Если заскучаешь, на доске иногда будут появляться дополнительные задания. И да, если ты поймёшь, что хочешь поменять ментора, просто скажи ему об этом. Но я бы советовал пройти до конца обучение у всех, так потом будет проще. До встречи!",
+  type: "mentor",
+  options: [
+    { text: "Спасибо, до встречи!", nextStep: "close" }
+  ]
+},
+}
+
 }

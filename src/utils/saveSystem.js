@@ -20,7 +20,12 @@ export const loadPlayerData = (name) => {
   if (data === null) {
     return null;
   }
-  return JSON.parse(data);
+  const player = JSON.parse(data);
+  // Для старых игроков, у которых нет поля tutorialCompleted
+  if (player.tutorialCompleted === undefined) {
+    player.tutorialCompleted = false;
+  }
+  return player;
 };
 
 // Сохранить данные игрока
@@ -37,7 +42,6 @@ export const savePlayerData = (playerData) => {
   }
 };
 
-// Удалить сохранение игрока
 // Удалить сохранение игрока
 export const deletePlayerData = (name) => {
   // 1. Удаляем данные игрока
