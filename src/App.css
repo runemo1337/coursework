@@ -9,12 +9,35 @@ html, body, #root {
   min-height: 100vh;
 }
 
-.characters-grid {
-  display: none;
+/* ========== КОНТЕЙНЕР ВСЕЙ ИГРОВОЙ СЦЕНЫ (ПРОКРУЧИВАЕТСЯ) ========== */
+.world-container {
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  position: relative;
+}
+
+/* Карта (фон) — размер 1622×795 */
+.map-container {
+  position: relative;
+  width: 1622px;
+  height: 795px;
+  background-image: url('/backgrounds/office.png');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+}
+
+/* Контейнер для персонажей */
+.characters-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .characters-card {
-  width: 100px;
+  position: absolute;
   cursor: pointer;
   transition: transform 0.2s;
 }
@@ -27,40 +50,157 @@ html, body, #root {
   transform: scale(0.98);
 }
 
+.character-sprite {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  transition: transform 0.2s;
+}
+
+/* Координаты персонажей (подбери под свою карту) */
+.character-egor {
+  top: 350px;
+  left: 250px;
+}
+
+.character-masha {
+  top: 340px;
+  left: 570px;
+}
+
+.character-andrey {
+  top: 270px;
+  left: 1200px;
+}
+
+.character-vova {
+  top: 540px;
+  left: 1380px;
+}
+
+.character-dmitry {
+  top: 330px;
+  left: 850px;
+}
+
+/* Кнопка доски задач */
+.task-board-button {
+  position: absolute;
+  top: 330px;
+  left: 1020px;
+  width: 240px;
+  height: 240px;
+  background-image: url('/buttons/task-board-icon.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.task-board-button:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s;
+}
+
+/* Подсветка кнопки */
+.highlight {
+  animation: pulse 0.8s ease-in-out 3;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(59, 130, 246, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+}
+
+/* Робот на карте */
+.robot-office {
+  position: absolute;
+  top: 450px;
+  left: 700px;
+  cursor: pointer;
+  width: 70px;
+  height: 70px;
+  z-index: 20;
+}
+
+.robot-sprite-office {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.robot-office:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s;
+}
+
+.robot-office.pointing {
+  animation: point 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes point {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(5deg); }
+}
+
+/* Кнопки внизу экрана */
+.buttons-container {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 8px 16px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 40px;
+  z-index: 100;
+  backdrop-filter: blur(4px);
+  width: auto;
+  max-width: 90%;
+}
+
+.buttons-container button {
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  border: none;
+  border-radius: 20px;
+  background-color: #3b82f6;
+  color: white;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+}
+
+.buttons-container button:hover {
+  background-color: #2563eb;
+}
+
+/* ========== ДИАЛОГОВОЕ ОКНО ========== */
 .dialogue-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);  /* затемнение */
-  background-image: url('/backgrounds/office.png');
-  background-size: cover;
-  background-position: center;
-  background-blend-mode: overlay;  /* смешивает фон с затемнением */
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
 }
 
-.dialogue-overlay2 {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-}
-
 .dialogue-window {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
   background: white;
   border-radius: 20px;
   padding: 24px;
-  max-width: 1000px;
+  max-width: 500px;
   width: 90%;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   animation: fadeIn 0.3s ease;
@@ -111,6 +251,15 @@ html, body, #root {
   background-color: #6b7280;
 }
 
+.portrait {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  object-position: 50% 30%;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -141,78 +290,7 @@ html, body, #root {
   cursor: pointer;
 }
 
-.character-sprite {
-  width: 130%;
-  height: 130%;
-  object-fit: contain;
-}
-
-.portrait {
-  width: 64px;
-  height: 64px;
-  object-fit: cover;
-  object-position: 50% 30%;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-/* Фон офиса */
-body {
-  min-height: 100vh;
-}
-
-.map-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background-image: url('/backgrounds/office.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-/* Контейнер для персонажей */
-.characters-container {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-}
-
-.characters-card {
-  position: absolute;
-}
-
-/* Координаты персонажей */
-.character-egor {
-  position: absolute;
-  top: 45%;
-  left: 13%;
-}
-
-.character-masha {
-  position: absolute;
-  top: 40%;
-  left: 36%;
-}
-
-.character-andrey {
-  position: absolute;
-  top: 30%;
-  left: 72%;
-}
-
-.character-vova {
-  top: 65%;
-  left: 85%;
-}
-
-.character-dmitry {
-  position: absolute;
-  top: 43%;
-  left: 53%;
-}
-
-/* NameInput стили */
+/* ========== NameInput стили ========== */
 .name-input-overlay {
   position: fixed;
   top: 0;
@@ -285,155 +363,34 @@ body {
   text-align: center;
 }
 
-/* Кнопка доски задач */
-.task-board-button {
-  position: absolute;
-  clip-path: circle(38%);
-  bottom: 31%;
-  left: 63%;
-  width: 200px;
-  height: 200px;
-  background-image: url('/buttons/task-board-icon.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  z-index: 10;
+/* ========== АДАПТИВ ========== */
+@media (max-width: 768px) {
+  .character-sprite {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .buttons-container button {
+    padding: 4px 10px;
+    font-size: 10px;
+  }
+  
+  .dialogue-window {
+    padding: 16px;
+  }
+  
+  .dialogue-text {
+    gap: 8px;
+    font-size: 14px;
+  }
+  
+  .portrait {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .dialogue-button {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
 }
-
-.task-board-button:hover {
-  transform: scale(1.05);
-  transition: transform 0.2s;
-}
-
-/* Подсветка кнопки */
-.highlight {
-  animation: pulse 0.8s ease-in-out 3;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
-  70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(59, 130, 246, 0); }
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
-}
-
-/* Кнопки внизу экрана */
-.buttons-container {
-  position: fixed;
-  bottom: 20px;
-  left: 0;
-  right: 0;
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding: 10px;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
-  margin: 0 20px;
-  z-index: 100;
-}
-
-.buttons-container button {
-  padding: 8px 16px;
-  font-size: 14px;
-  cursor: pointer;
-  border: none;
-  border-radius: 8px;
-  background-color: #3b82f6;
-  color: white;
-  transition: background-color 0.2s;
-}
-
-.buttons-container button:hover {
-  background-color: #2563eb;
-}
-
-.robot-office {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  cursor: pointer;
-  width: 100px;
-  height: 100px;
-  z-index: 20;
-}
-
-.robot-sprite-office {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.robot-office:hover {
-  transform: translate(-50%, -50%) scale(1.05);
-  transition: transform 0.2s;
-}
-
-/* Режим туториала — доска не перекрывает диалог */
-.tasks-board-overlay.tutorial-mode {
-  background-color: rgba(0, 0, 0, 0.3);
-  pointer-events: none;
-  z-index: 900;
-}
-
-.tasks-board-overlay.tutorial-mode .tasks-board-container {
-  pointer-events: auto;
-  opacity: 0.95;
-}
-
-.tasks-board-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1000;
-}
-
-.tasks-board-wrapper .tasks-board-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.3);
-  z-index: 1;
-}
-
-.tasks-board-wrapper .tasks-board-container {
-  position: relative;
-  z-index: 2;
-}
-
-.tasks-board-wrapper .dialogue-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
-  pointer-events: none;
-  background-color: transparent;
-}
-
-.tasks-board-wrapper .dialogue-wrapper .dialogue-window {
-  pointer-events: auto;
-}
-
-/* Робот по центру (исходная позиция) */
-.robot-office.center {
-  position: absolute;
-  top: 65%;
-  left: 64%;
-  transform: translate(-50%, -50%);
-}
-
-
-

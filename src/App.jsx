@@ -351,8 +351,9 @@ function App() {
   }
 
   // Основная игра
-  return (
-    <div>
+return (
+  <div>
+    <div className="world-container">
       <div className="map-container">
         <div className="characters-container">
           {showMentors && (
@@ -366,62 +367,33 @@ function App() {
           )}
           
           {showRobotMap && (
-            <div 
-              className={`robot-office ${robotPosition === 'nearTaskBoard' ? 'near-task-board pointing' : 'center'}`} 
-              onClick={handleRobotMapClick}
-            >
+            <div className="robot-office" onClick={handleRobotMapClick}>
               <img src="/sprites/робот.png" alt="Робот" className="robot-sprite-office" />
             </div>
           )}
         </div>
         
-        {showTaskButton && (
-          <button 
-            className={`task-board-button ${highlightTaskBoard ? 'highlight' : ''}`}
-            onClick={handleTaskBoardOpen}
-          />
-        )}
-      </div>
-
-      <div className="buttons-container">
-        <button onClick={() => setShowReport(true)}>Завершить игру</button>
-
-        <button onClick={() => {
-          setSelectedAIMentor('Егор');
-          setShowAIChat(true);
-        }}>🤖 Спросить Егора (AI)</button>
-        
-        <button onClick={() => {
-          setSelectedAIMentor('Маша');
-          setShowAIChat(true);
-        }}>🤖 Спросить Машу (AI)</button>
-        
-        <button onClick={() => {
-          setSelectedAIMentor('Андрей');
-          setShowAIChat(true);
-        }}>🤖 Спросить Андрея (AI)</button>
-        
-        <button onClick={() => {
-          setSelectedAIMentor('Вова');
-          setShowAIChat(true);
-        }}>🤖 Спросить Вову (AI)</button>
-        
-        <button onClick={() => {
-          setSelectedAIMentor('Дмитрий');
-          setShowAIChat(true);
-        }}>🤖 Спросить Дмитрия (AI)</button>
-        
-        <button onClick={() => {
-          setStage('select');
-          setSelectedCharacter(null);
-          setShowReport(false);
-          setShowAIChat(false);
-          setShowTaskBoard(false);
-          resetTutorialState();
-        }}>🚪 Выйти из аккаунта</button>
+        <button 
+          className={`task-board-button ${highlightTaskBoard ? 'highlight' : ''}`}
+          onClick={handleTaskBoardOpen}
+        />
       </div>
     </div>
-  );
+
+    <div className="buttons-container">
+      <button onClick={() => setShowReport(true)}>Завершить игру</button>
+  
+  <button onClick={() => {
+    setStage('select');
+    setSelectedCharacter(null);
+    setShowReport(false);
+    setShowAIChat(false);
+    setShowTaskBoard(false);
+    resetTutorialState();
+  }}>🚪 Выйти из аккаунта</button>
+    </div>
+  </div>
+);
 }
 
 export default App;
